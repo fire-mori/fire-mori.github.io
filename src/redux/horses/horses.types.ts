@@ -1,0 +1,7 @@
+const HorsesActionsTypes = {
+  FETCH_HORSES_BEGIN: "FETCH_HORSES_BEGIN",
+  FETCH_HORSES_SUCCESS: "FETCH_HORSES_SUCCESS",
+  FETCH_HORSES_FAILURE: "FETCH_HORSES_FAILURE",
+};
+
+export default HorsesActionsTypes;
