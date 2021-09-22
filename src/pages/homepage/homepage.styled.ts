@@ -6,7 +6,7 @@ export const HomePageWrapper = styled.div`
   align-items: center;
   padding: 20px 0px;
   background-color: #f1f1f1;
-  height: 100vh;
+  height: 100%;
 `;
 
 export const Title = styled.h1`

@@ -1,11 +1,11 @@
 import React from "react";
-import List from "../../components/list/list.component";
+import HorseList from "../../components/HorseList/HorseList.component";
 import { HomePageWrapper, Title } from "./homepage.styled";
 
 const HomePage = () => (
   <HomePageWrapper>
     <Title>Horses</Title>
-    <List />
+    <HorseList />
   </HomePageWrapper>
 );
 
