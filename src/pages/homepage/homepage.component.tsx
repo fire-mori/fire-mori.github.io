@@ -5,6 +5,7 @@ import { HomePageWrapper, Title } from "./homepage.styled";
 const HomePage = () => (
   <HomePageWrapper>
     <Title>Horses</Title>
+    <List />
   </HomePageWrapper>
 );
 
