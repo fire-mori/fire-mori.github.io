@@ -1,11 +1,7 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+import { CardContent, Typography, Button, Card, Fab } from '@mui/material';
 import { Horse } from '../HorseList/HorseList.component';
 import { Icon } from './HorseCard.styled';
-import Fab from '@mui/material/Fab';
 import HorseCardEditMode from './HorseCardEditMode.component';
 import HorseCardViewMode from './HorseCardViewMode.component';
 

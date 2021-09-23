@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Horse } from '../HorseList/HorseList.component';
-import Typography from '@mui/material/Typography';
+import { Typography } from '@mui/material';
 
 interface Props {
   horse: Horse;

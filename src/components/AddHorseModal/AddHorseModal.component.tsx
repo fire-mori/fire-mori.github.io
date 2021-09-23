@@ -1,14 +1,16 @@
 import * as React from 'react';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Dialog from '@mui/material/Dialog';
-import TextField from '@mui/material/TextField';
-import DialogActions from '@mui/material/DialogActions';
-import Button from '@mui/material/Button';
+import {
+  DialogContent,
+  DialogTitle,
+  Dialog,
+  TextField,
+  DialogActions,
+  Button,
+} from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { addHorse } from '../../redux/horses/horses.actions';
 import { connect, useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 interface Props {
   open: boolean;
@@ -33,41 +35,38 @@ const AddHorseModal: React.FC<Props> = ({ open, handleClose }) => {
   const dispatch = useDispatch();
 
   const onSubmit = async (data: HorseToAdd) => {
-    const result = await trigger('name');
+    const isValid = await trigger('name');
 
-    if (result) {
-      const updatedHorseValues = {
-        name: data.name,
-        profile: {
-          favouriteFood: data.favouriteFood,
-          physical: {
-            height: Number(data.height),
-            weight: Number(data.weight),
-          },
-        },
-      };
-      dispatch(addHorse(updatedHorseValues));
-      handleClose();
+    if (!isValid) {
+      return;
     }
+
+    const updatedHorseValues = {
+      name: data.name,
+      profile: {
+        favouriteFood: data.favouriteFood,
+        physical: {
+          height: Number(data.height),
+          weight: Number(data.weight),
+        },
+      },
+    };
+    dispatch(addHorse(updatedHorseValues));
+    handleClose();
   };
 
   return (
     <Dialog open={open} onClose={handleClose}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <DialogTitle>Subscribe</DialogTitle>
+        <DialogTitle>Add horse</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            To subscribe to this website, please enter your email address here.
-            We will send updates occasionally.
-          </DialogContentText>
-
           <TextField
             {...register('name', { required: true })}
             name={'name'}
             autoFocus
             margin="dense"
             id="name"
-            label="Name*"
+            label="Name *"
             type="text"
             fullWidth
             variant="standard"

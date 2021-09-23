@@ -2,12 +2,10 @@ import React from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { fetchHorses } from '../../redux/horses/horses.actions';
 import { HorseCard } from '../HorseCard/HorseCard.component';
-import Grid from '@mui/material/Grid';
-import Pagination from '@mui/material/Pagination';
+import { Grid, Pagination, Fab } from '@mui/material';
 import { PAGE_SIZE } from '../../config/constants';
-import Fab from '@mui/material/Fab';
-import AddHorseModal from '../AddHorseModal/AddHorseModal.component';
 import { HorseCompareTable } from '../HorseCompareTable/HorseCompareTable.component';
+import AddHorseModal from '../AddHorseModal/AddHorseModal.component';
 
 export interface Physical {
   height: number;

@@ -4,6 +4,7 @@ import { TextField, Button } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { updateHorses } from '../../redux/horses/horses.actions';
 import { connect, useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 interface Props {
   horse: Horse;
