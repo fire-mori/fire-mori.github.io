@@ -6,8 +6,8 @@ import Grid from "@mui/material/Grid";
 import Pagination from "@mui/material/Pagination";
 import { PAGE_SIZE } from "../../config/constants";
 import Fab from "@mui/material/Fab";
-
 import AddHorseModal from "../AddHorseModal/AddHorseModal.component";
+import { HorseCompareTable } from "../HorseCompareTable/HorseCompareTable.component";
 
 export interface Physical {
   height: number;
@@ -47,16 +47,24 @@ const HorseList: React.FC<Props> = ({ horses }) => {
   const [page, setPage] = React.useState(1);
   const [data, setData] = React.useState(items.slice(0, pageSize));
   const [isModalOpen, setModalOpen] = React.useState(false);
+  const [selectedItems, setSelectedItems] = React.useState<Horse[]>([]);
 
   React.useEffect(() => {
     setData(items.slice(0, pageSize));
   }, [items, pageSize]);
 
-  console.log("data", data);
-
   const handleChange = (value: number) => {
     setPage(value);
     setData(items.slice(0 + pageSize * (value - 1), pageSize * value));
+  };
+
+  const addToCompare = (item: Horse) => {
+    setSelectedItems((selectedItems) => [...selectedItems, item]);
+  };
+
+  const removeFromCompare = (item: Horse) => {
+    const filteredItems = selectedItems.filter((horse) => horse.id !== item.id);
+    setSelectedItems((selectedItems) => filteredItems);
   };
 
   if (error) {
@@ -70,10 +78,16 @@ const HorseList: React.FC<Props> = ({ horses }) => {
 
   return (
     <>
-      <Grid sx={{ width: "50%" }} container spacing={2}>
+      {selectedItems.length > 0 && <HorseCompareTable horses={selectedItems} />}
+      <Grid sx={{ width: "50%", position: "relative" }} container spacing={2}>
         {data.map((horse) => (
           <Grid item xs={12}>
-            <HorseCard horse={horse} />
+            <HorseCard
+              horse={horse}
+              addToCompare={addToCompare}
+              removeFromCompare={removeFromCompare}
+              selected={selectedItems}
+            />
           </Grid>
         ))}
 

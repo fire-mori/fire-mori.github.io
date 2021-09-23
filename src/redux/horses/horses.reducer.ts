@@ -56,7 +56,6 @@ export default function horsesReducer(state = initialState, action: any) {
       };
 
     case HorsesActionsTypes.ADD_HORSE:
-      console.log("action", action);
       return {
         ...state,
         items: [...state.items].concat(action.payload),

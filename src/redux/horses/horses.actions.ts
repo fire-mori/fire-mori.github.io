@@ -76,7 +76,7 @@ export const updateHorses = (updatedHorse: any, id: string) => {
       },
     })
       .then(() => {
-        dispatch(updatedHorse(updatedHorse));
+        dispatch(horseUpdated(updatedHorse));
       })
       .catch((error) => {
         dispatch(failedUpdate(error));
@@ -94,9 +94,9 @@ export const addHorse = (newHorse: Omit<Horse, "id">) => {
       },
     })
       .then(async (response) => {
-        const horseID = await response.text();
+        const horseID = await response.json();
         const addedHorse = {
-          id: horseID,
+          id: String(horseID),
           ...newHorse,
         };
         dispatch(horseAdded(addedHorse));

@@ -23,23 +23,31 @@ interface HorseToAdd {
 }
 
 const AddHorseModal: React.FC<Props> = ({ open, handleClose }) => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    trigger,
+    formState: { errors },
+  } = useForm();
 
   const dispatch = useDispatch();
 
-  const onSubmit = (data: HorseToAdd) => {
-    const updatedHorseValues = {
-      name: data.name,
-      profile: {
-        favouriteFood: data.favouriteFood,
-        physical: {
-          height: Number(data.height),
-          weight: Number(data.weight),
+  const onSubmit = async (data: HorseToAdd) => {
+    const result = await trigger("name");
+
+    if (result) {
+      const updatedHorseValues = {
+        name: data.name,
+        profile: {
+          favouriteFood: data.favouriteFood,
+          physical: {
+            height: Number(data.height),
+            weight: Number(data.weight),
+          },
         },
-      },
-    };
-    console.log("onSubmit", data);
-    dispatch(addHorse(updatedHorseValues));
+      };
+      dispatch(addHorse(updatedHorseValues));
+    }
   };
 
   return (
@@ -53,15 +61,17 @@ const AddHorseModal: React.FC<Props> = ({ open, handleClose }) => {
           </DialogContentText>
 
           <TextField
-            {...register("name")}
+            {...register("name", { required: true })}
             name={"name"}
             autoFocus
             margin="dense"
             id="name"
-            label="Name"
+            label="Name*"
             type="text"
             fullWidth
             variant="standard"
+            error={!!errors.name}
+            helperText={!!errors.name && "Please fill required field"}
           />
           <TextField
             {...register("favouriteFood")}
