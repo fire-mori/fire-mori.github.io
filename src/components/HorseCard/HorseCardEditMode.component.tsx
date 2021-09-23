@@ -18,7 +18,7 @@ interface HorseToUpdate {
 }
 
 const HorseCardEditMode: React.FC<Props> = ({ horse, onSave }) => {
-  const { name, profile } = horse;
+  const { id, name, profile } = horse;
   const {
     register,
     handleSubmit,
@@ -33,6 +33,7 @@ const HorseCardEditMode: React.FC<Props> = ({ horse, onSave }) => {
 
     if (result) {
       const updatedHorseValues = {
+        id: id,
         name: data.name,
         profile: {
           favouriteFood: data.favouriteFood,

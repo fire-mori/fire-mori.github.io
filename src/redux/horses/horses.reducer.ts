@@ -48,10 +48,8 @@ export default function horsesReducer(state = initialState, action: any) {
     case HorsesActionsTypes.HORSE_UPDATED:
       return {
         ...state,
-        items: [...state.items].map((item) => {
-          return (item as Horse).id === action.payload.id
-            ? action.payload
-            : item;
+        items: [...state.items].map((item: Horse) => {
+          return item.id === action.payload.id ? action.payload : item;
         }),
       };
 

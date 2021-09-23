@@ -23,7 +23,6 @@ export const HorseCard: React.FC<Props> = ({
   selected,
 }) => {
   const { name } = horse;
-  const randomColor = Math.floor(Math.random() * 16777215).toString(16);
   const [toggled, setToggled] = React.useState(false);
   const [editMode, setEditMode] = React.useState(false);
 
@@ -37,9 +36,13 @@ export const HorseCard: React.FC<Props> = ({
         flexDirection: "row",
         display: "flex",
         position: "relative",
+        outline:
+          selected && selected.includes(horse) ? "1px solid #9c27b0" : "unset",
       }}
     >
-      <Icon color={`#${randomColor}`} />
+      <Icon
+        color={selected && selected.includes(horse) ? "#9c27b0" : "#1976d2"}
+      />
       <CardContent
         sx={!toggled ? { alignItems: "center", display: "flex" } : null}
       >
@@ -49,11 +52,14 @@ export const HorseCard: React.FC<Props> = ({
             color="text.primary"
             gutterBottom
           >
-            {name} |
+            {name}
             {selected && selected.includes(horse) ? (
               <Button
                 color="secondary"
-                onClick={() => removeFromCompare(horse)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  removeFromCompare(horse);
+                }}
                 sx={{ marginLeft: "10px" }}
               >
                 Remove from compare table
@@ -61,7 +67,10 @@ export const HorseCard: React.FC<Props> = ({
             ) : (
               <Button
                 color="primary"
-                onClick={() => addToCompare(horse)}
+                onClick={(e) => {
+                  addToCompare(horse);
+                  e.stopPropagation();
+                }}
                 sx={{ marginLeft: "10px" }}
                 disabled={Boolean(selected.length >= 2)}
               >

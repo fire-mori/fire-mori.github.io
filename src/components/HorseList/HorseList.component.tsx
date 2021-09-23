@@ -78,10 +78,28 @@ const HorseList: React.FC<Props> = ({ horses }) => {
 
   return (
     <>
-      {selectedItems.length > 0 && <HorseCompareTable horses={selectedItems} />}
+      <div style={{ width: "50%", height: "200px" }}>
+        {selectedItems.length > 0 ? (
+          <HorseCompareTable horses={selectedItems} />
+        ) : (
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              height: "168px",
+              backgroundColor: "#dddddd",
+              borderRadius: "10px",
+            }}
+          >
+            Please pick 2 items to compare
+          </div>
+        )}
+      </div>
       <Grid sx={{ width: "50%", position: "relative" }} container spacing={2}>
         {data.map((horse) => (
-          <Grid item xs={12}>
+          <Grid key={horse.id} item xs={12}>
             <HorseCard
               horse={horse}
               addToCompare={addToCompare}

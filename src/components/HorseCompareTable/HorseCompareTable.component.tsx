@@ -1,8 +1,7 @@
 import * as React from "react";
-import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
@@ -23,8 +22,6 @@ export const HorseCompareTable: React.FC<Props> = ({ horses }) => {
     return { name, favouriteFood, weight, height };
   };
 
-  console.log(horses);
-
   const rows = horses.map((horse: Horse) => {
     const { profile, name } = horse;
     const { favouriteFood, physical } = profile;
@@ -34,7 +31,7 @@ export const HorseCompareTable: React.FC<Props> = ({ horses }) => {
   return (
     <TableContainer
       component={Paper}
-      sx={{ marginBottom: "40px", width: "50%" }}
+      sx={{ marginBottom: "40px", width: "100%" }}
     >
       <Table aria-label="customized table">
         <TableHead sx={{ backgroundColor: "#1976d2" }}>
