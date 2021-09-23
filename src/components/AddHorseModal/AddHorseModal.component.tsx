@@ -1,14 +1,14 @@
-import * as React from "react";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-import Dialog from "@mui/material/Dialog";
-import TextField from "@mui/material/TextField";
-import DialogActions from "@mui/material/DialogActions";
-import Button from "@mui/material/Button";
-import { useForm } from "react-hook-form";
-import { addHorse } from "../../redux/horses/horses.actions";
-import { connect, useDispatch } from "react-redux";
+import * as React from 'react';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Dialog from '@mui/material/Dialog';
+import TextField from '@mui/material/TextField';
+import DialogActions from '@mui/material/DialogActions';
+import Button from '@mui/material/Button';
+import { useForm } from 'react-hook-form';
+import { addHorse } from '../../redux/horses/horses.actions';
+import { connect, useDispatch } from 'react-redux';
 
 interface Props {
   open: boolean;
@@ -33,7 +33,7 @@ const AddHorseModal: React.FC<Props> = ({ open, handleClose }) => {
   const dispatch = useDispatch();
 
   const onSubmit = async (data: HorseToAdd) => {
-    const result = await trigger("name");
+    const result = await trigger('name');
 
     if (result) {
       const updatedHorseValues = {
@@ -47,6 +47,7 @@ const AddHorseModal: React.FC<Props> = ({ open, handleClose }) => {
         },
       };
       dispatch(addHorse(updatedHorseValues));
+      handleClose();
     }
   };
 
@@ -61,8 +62,8 @@ const AddHorseModal: React.FC<Props> = ({ open, handleClose }) => {
           </DialogContentText>
 
           <TextField
-            {...register("name", { required: true })}
-            name={"name"}
+            {...register('name', { required: true })}
+            name={'name'}
             autoFocus
             margin="dense"
             id="name"
@@ -71,10 +72,10 @@ const AddHorseModal: React.FC<Props> = ({ open, handleClose }) => {
             fullWidth
             variant="standard"
             error={!!errors.name}
-            helperText={!!errors.name && "Please fill required field"}
+            helperText={!!errors.name && 'Please fill required field'}
           />
           <TextField
-            {...register("favouriteFood")}
+            {...register('favouriteFood')}
             name="favouriteFood"
             margin="dense"
             id="name"
@@ -84,7 +85,7 @@ const AddHorseModal: React.FC<Props> = ({ open, handleClose }) => {
             variant="standard"
           />
           <TextField
-            {...register("weight")}
+            {...register('weight')}
             name="weight"
             margin="dense"
             id="name"
@@ -94,7 +95,7 @@ const AddHorseModal: React.FC<Props> = ({ open, handleClose }) => {
             variant="standard"
           />
           <TextField
-            {...register("height")}
+            {...register('height')}
             name="height"
             margin="dense"
             id="name"

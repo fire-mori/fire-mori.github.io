@@ -1,4 +1,4 @@
-import HorsesActionsTypes from "./horses.types";
+import HorsesActionsTypes from './horses.types';
 export interface Physical {
   height: number;
   weight: number;

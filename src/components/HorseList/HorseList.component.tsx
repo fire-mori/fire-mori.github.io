@@ -1,13 +1,13 @@
-import React from "react";
-import { connect, useDispatch } from "react-redux";
-import { fetchHorses } from "../../redux/horses/horses.actions";
-import { HorseCard } from "../HorseCard/HorseCard.component";
-import Grid from "@mui/material/Grid";
-import Pagination from "@mui/material/Pagination";
-import { PAGE_SIZE } from "../../config/constants";
-import Fab from "@mui/material/Fab";
-import AddHorseModal from "../AddHorseModal/AddHorseModal.component";
-import { HorseCompareTable } from "../HorseCompareTable/HorseCompareTable.component";
+import React from 'react';
+import { connect, useDispatch } from 'react-redux';
+import { fetchHorses } from '../../redux/horses/horses.actions';
+import { HorseCard } from '../HorseCard/HorseCard.component';
+import Grid from '@mui/material/Grid';
+import Pagination from '@mui/material/Pagination';
+import { PAGE_SIZE } from '../../config/constants';
+import Fab from '@mui/material/Fab';
+import AddHorseModal from '../AddHorseModal/AddHorseModal.component';
+import { HorseCompareTable } from '../HorseCompareTable/HorseCompareTable.component';
 
 export interface Physical {
   height: number;
@@ -78,26 +78,26 @@ const HorseList: React.FC<Props> = ({ horses }) => {
 
   return (
     <>
-      <div style={{ width: "50%", height: "200px" }}>
+      <div style={{ width: '50%', height: '200px' }}>
         {selectedItems.length > 0 ? (
           <HorseCompareTable horses={selectedItems} />
         ) : (
           <div
             style={{
-              width: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              height: "168px",
-              backgroundColor: "#dddddd",
-              borderRadius: "10px",
+              width: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '168px',
+              backgroundColor: '#dddddd',
+              borderRadius: '10px',
             }}
           >
             Please pick 2 items to compare
           </div>
         )}
       </div>
-      <Grid sx={{ width: "50%", position: "relative" }} container spacing={2}>
+      <Grid sx={{ width: '50%', position: 'relative' }} container spacing={2}>
         {data.map((horse) => (
           <Grid key={horse.id} item xs={12}>
             <HorseCard
@@ -111,7 +111,7 @@ const HorseList: React.FC<Props> = ({ horses }) => {
 
         {items?.length > pageSize && (
           <Pagination
-            sx={{ margin: "20px auto" }}
+            sx={{ margin: '20px auto' }}
             count={Math.ceil(items.length / pageSize)}
             page={page}
             onChange={(_event, newPage: number) => handleChange(newPage)}
@@ -119,7 +119,7 @@ const HorseList: React.FC<Props> = ({ horses }) => {
         )}
       </Grid>
       <Fab
-        sx={{ position: "fixed", bottom: 10, right: 10 }}
+        sx={{ position: 'fixed', bottom: 10, right: 10 }}
         color="primary"
         aria-label="add"
         onClick={() => {

@@ -1,4 +1,4 @@
-import HorsesActionsTypes from "./horses.types";
+import HorsesActionsTypes from './horses.types';
 interface Physical {
   height: number;
   weight: number;
@@ -15,7 +15,7 @@ interface Horse {
 }
 
 const getHorses = () => {
-  return fetch("http://localhost:3016/horse")
+  return fetch('http://localhost:3016/horse')
     .then((response) => response.json())
     .then((data) => data);
 };
@@ -69,10 +69,10 @@ export function fetchHorses() {
 export const updateHorses = (updatedHorse: any, id: string) => {
   return (dispatch: any) => {
     fetch(`http://localhost:3016/horse/${id}`, {
-      method: "PUT",
+      method: 'PUT',
       body: JSON.stringify(updatedHorse),
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     })
       .then(() => {
@@ -84,13 +84,13 @@ export const updateHorses = (updatedHorse: any, id: string) => {
   };
 };
 
-export const addHorse = (newHorse: Omit<Horse, "id">) => {
+export const addHorse = (newHorse: Omit<Horse, 'id'>) => {
   return (dispatch: any) => {
-    fetch(`http://localhost:3016/horse`, {
-      method: "PUT",
+    fetch('http://localhost:3016/horse', {
+      method: 'PUT',
       body: JSON.stringify(newHorse),
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     })
       .then(async (response) => {

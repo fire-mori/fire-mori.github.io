@@ -1,13 +1,13 @@
-import * as React from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import { Horse } from "../HorseList/HorseList.component";
-import { Icon } from "./HorseCard.styled";
-import Fab from "@mui/material/Fab";
-import HorseCardEditMode from "./HorseCardEditMode.component";
-import HorseCardViewMode from "./HorseCardViewMode.component";
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import { Horse } from '../HorseList/HorseList.component';
+import { Icon } from './HorseCard.styled';
+import Fab from '@mui/material/Fab';
+import HorseCardEditMode from './HorseCardEditMode.component';
+import HorseCardViewMode from './HorseCardViewMode.component';
 
 interface Props {
   horse: Horse;
@@ -33,18 +33,18 @@ export const HorseCard: React.FC<Props> = ({
       }}
       sx={{
         minWidth: 275,
-        flexDirection: "row",
-        display: "flex",
-        position: "relative",
+        flexDirection: 'row',
+        display: 'flex',
+        position: 'relative',
         outline:
-          selected && selected.includes(horse) ? "1px solid #9c27b0" : "unset",
+          selected && selected.includes(horse) ? '1px solid #9c27b0' : 'unset',
       }}
     >
       <Icon
-        color={selected && selected.includes(horse) ? "#9c27b0" : "#1976d2"}
+        color={selected && selected.includes(horse) ? '#9c27b0' : '#1976d2'}
       />
       <CardContent
-        sx={!toggled ? { alignItems: "center", display: "flex" } : null}
+        sx={!toggled ? { alignItems: 'center', display: 'flex' } : null}
       >
         {!editMode && (
           <Typography
@@ -60,7 +60,7 @@ export const HorseCard: React.FC<Props> = ({
                   e.stopPropagation();
                   removeFromCompare(horse);
                 }}
-                sx={{ marginLeft: "10px" }}
+                sx={{ marginLeft: '10px' }}
               >
                 Remove from compare table
               </Button>
@@ -71,7 +71,7 @@ export const HorseCard: React.FC<Props> = ({
                   addToCompare(horse);
                   e.stopPropagation();
                 }}
-                sx={{ marginLeft: "10px" }}
+                sx={{ marginLeft: '10px' }}
                 disabled={Boolean(selected.length >= 2)}
               >
                 Add to compare table
@@ -85,14 +85,14 @@ export const HorseCard: React.FC<Props> = ({
         )}
       </CardContent>
       <Fab
-        sx={{ position: "absolute", bottom: 10, right: 10 }}
-        color={!editMode ? "primary" : "secondary"}
+        sx={{ position: 'absolute', bottom: 10, right: 10 }}
+        color={!editMode ? 'primary' : 'secondary'}
         aria-label="edit"
         onClick={() => {
           setEditMode(!editMode);
         }}
       >
-        {!editMode ? "Edit" : "Exit"}
+        {!editMode ? 'Edit' : 'Exit'}
       </Fab>
     </Card>
   );

@@ -1,12 +1,12 @@
-import * as React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import { Horse } from "../HorseList/HorseList.component";
+import * as React from 'react';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import { Horse } from '../HorseList/HorseList.component';
 
 interface Props {
   horses: Horse[];
@@ -31,19 +31,19 @@ export const HorseCompareTable: React.FC<Props> = ({ horses }) => {
   return (
     <TableContainer
       component={Paper}
-      sx={{ marginBottom: "40px", width: "100%" }}
+      sx={{ marginBottom: '40px', width: '100%' }}
     >
       <Table aria-label="customized table">
-        <TableHead sx={{ backgroundColor: "#1976d2" }}>
+        <TableHead sx={{ backgroundColor: '#1976d2' }}>
           <TableRow>
-            <TableCell sx={{ color: "#ffffff" }}>Horse name</TableCell>
-            <TableCell sx={{ color: "#ffffff" }} align="right">
+            <TableCell sx={{ color: '#ffffff' }}>Horse name</TableCell>
+            <TableCell sx={{ color: '#ffffff' }} align="right">
               Favourite food
             </TableCell>
-            <TableCell sx={{ color: "#ffffff" }} align="right">
+            <TableCell sx={{ color: '#ffffff' }} align="right">
               Weight
             </TableCell>
-            <TableCell sx={{ color: "#ffffff" }} align="right">
+            <TableCell sx={{ color: '#ffffff' }} align="right">
               Height
             </TableCell>
           </TableRow>

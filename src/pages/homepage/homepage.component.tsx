@@ -1,6 +1,6 @@
-import React from "react";
-import HorseList from "../../components/HorseList/HorseList.component";
-import { HomePageWrapper, Title } from "./HomePage.styled";
+import React from 'react';
+import HorseList from '../../components/HorseList/HorseList.component';
+import { HomePageWrapper, Title } from './HomePage.styled';
 
 const HomePage = () => (
   <HomePageWrapper>

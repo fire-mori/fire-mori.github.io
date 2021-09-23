@@ -1,9 +1,9 @@
-import * as React from "react";
-import { Horse } from "../HorseList/HorseList.component";
-import { TextField, Button } from "@mui/material";
-import { useForm } from "react-hook-form";
-import { updateHorses } from "../../redux/horses/horses.actions";
-import { connect, useDispatch } from "react-redux";
+import * as React from 'react';
+import { Horse } from '../HorseList/HorseList.component';
+import { TextField, Button } from '@mui/material';
+import { useForm } from 'react-hook-form';
+import { updateHorses } from '../../redux/horses/horses.actions';
+import { connect, useDispatch } from 'react-redux';
 
 interface Props {
   horse: Horse;
@@ -29,7 +29,7 @@ const HorseCardEditMode: React.FC<Props> = ({ horse, onSave }) => {
   const dispatch = useDispatch();
 
   const onSubmit = async (data: HorseToUpdate) => {
-    const result = await trigger("name");
+    const result = await trigger('name');
 
     if (result) {
       const updatedHorseValues = {
@@ -49,11 +49,11 @@ const HorseCardEditMode: React.FC<Props> = ({ horse, onSave }) => {
   };
 
   return (
-    <div style={{ width: "80%" }}>
+    <div style={{ width: '80%' }}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <TextField
-          {...register("name", { required: true })}
-          name={"name"}
+          {...register('name', { required: true })}
+          name={'name'}
           defaultValue={name}
           autoFocus
           margin="dense"
@@ -63,10 +63,10 @@ const HorseCardEditMode: React.FC<Props> = ({ horse, onSave }) => {
           fullWidth
           variant="standard"
           error={!!errors.name}
-          helperText={!!errors.name && "Please fill required field"}
+          helperText={!!errors.name && 'Please fill required field'}
         />
         <TextField
-          {...register("favouriteFood")}
+          {...register('favouriteFood')}
           name="favouriteFood"
           defaultValue={profile.favouriteFood}
           margin="dense"
@@ -77,7 +77,7 @@ const HorseCardEditMode: React.FC<Props> = ({ horse, onSave }) => {
           variant="standard"
         />
         <TextField
-          {...register("weight")}
+          {...register('weight')}
           name="weight"
           defaultValue={profile.physical.weight}
           margin="dense"
@@ -88,7 +88,7 @@ const HorseCardEditMode: React.FC<Props> = ({ horse, onSave }) => {
           variant="standard"
         />
         <TextField
-          {...register("height")}
+          {...register('height')}
           name="height"
           defaultValue={profile.physical.height}
           margin="dense"
@@ -98,7 +98,7 @@ const HorseCardEditMode: React.FC<Props> = ({ horse, onSave }) => {
           fullWidth
           variant="standard"
         />
-        <Button sx={{ marginTop: "20px" }} variant="contained" type="submit">
+        <Button sx={{ marginTop: '20px' }} variant="contained" type="submit">
           Submit
         </Button>
       </form>
