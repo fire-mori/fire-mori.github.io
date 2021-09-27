@@ -1,3 +1,4 @@
+import { API_URL } from '../../config/constants';
 import HorsesActionsTypes from './horses.types';
 interface Physical {
   height: number;
@@ -15,7 +16,7 @@ interface Horse {
 }
 
 const getHorses = () => {
-  return fetch('http://localhost:3016/horse')
+  return fetch(`${API_URL}/horse`)
     .then((response) => response.json())
     .then((data) => data);
 };
@@ -68,7 +69,7 @@ export function fetchHorses() {
 
 export const updateHorses = (updatedHorse: any, id: string) => {
   return (dispatch: any) => {
-    fetch(`http://localhost:3016/horse/${id}`, {
+    fetch(`${API_URL}/horse/${id}`, {
       method: 'PUT',
       body: JSON.stringify(updatedHorse),
       headers: {
@@ -86,7 +87,7 @@ export const updateHorses = (updatedHorse: any, id: string) => {
 
 export const addHorse = (newHorse: Omit<Horse, 'id'>) => {
   return (dispatch: any) => {
-    fetch('http://localhost:3016/horse', {
+    fetch(`${API_URL}/horse`, {
       method: 'PUT',
       body: JSON.stringify(newHorse),
       headers: {
