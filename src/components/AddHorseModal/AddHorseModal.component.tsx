@@ -10,7 +10,6 @@ import {
 import { useForm } from 'react-hook-form';
 import { addHorse } from '../../redux/horses/horses.actions';
 import { connect, useDispatch } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 interface Props {
   open: boolean;
