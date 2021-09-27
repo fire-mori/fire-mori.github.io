@@ -1,5 +1,5 @@
 import HorseList from '../../components/HorseList/HorseList.component';
-import { HomePageWrapper, Title } from './HomePage.styled';
+import { HomePageWrapper, Title } from './homepage.styled';
 
 const HomePage = () => (
   <HomePageWrapper>
